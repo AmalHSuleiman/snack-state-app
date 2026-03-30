@@ -8,12 +8,19 @@ This file provides guidance to Claude Code for working in this repository.
 npm run dev
 ```
 
-Opens at [http://localhost:3000](http://localhost:3000). No separate seed step needed — the SQLite database is created and seeded automatically on first request.
+Opens at [http://localhost:3000](http://localhost:3000). No separate seed step needed — the database is seeded automatically on first request.
 
 ```bash
 npm run build   # production build
 npm start       # run production build
 ```
+
+## Deployment
+
+- **Live URL:** https://snack-state-app.vercel.app
+- **Hosting:** Vercel
+- **Database:** Supabase (production); SQLite via `node:sqlite` (local dev)
+- Supabase credentials are stored as Vercel environment variables — never hardcode them in source files
 
 ## Git workflow
 
@@ -31,7 +38,7 @@ After completing any meaningful unit of work, commit and push to GitHub immediat
 | Frontend | Next.js 16 (App Router, Turbopack)|
 | Styling  | Tailwind CSS                      |
 | Backend  | Next.js API Routes                |
-| Database | SQLite via `node:sqlite` (built-in Node module, no native compilation) |
+| Database | Supabase (production) / SQLite via `node:sqlite` (local dev)            |
 | Language | TypeScript                        |
 
 ### Project structure
@@ -55,7 +62,7 @@ lib/
 
 ## Key implementation details
 
-- **Snack library** — 50 generic snacks in `data/snacks.ts` with USDA-aligned nutrition values; seeded into SQLite on first boot
+- **Snack library** — 50 generic snacks in `data/snacks.ts` with USDA-aligned nutrition values; seeded into the database on first boot
 - **Scoring** — `lib/scoring.ts` computes a weighted nutrition score per state; a time-of-day adjustment applies heavier caffeine penalties after 2 PM
 - **States** — `energized`, `focused`, `calm`, `uplifted`, `sleep_ready`; each has distinct scoring weights and penalty rules
 - **Dietary filters** — `no_caffeine`, `nut_free`, `dairy_free`, `vegetarian`, `vegan`; passed as query params from the home page
@@ -64,4 +71,6 @@ lib/
 
 ## Extending the snack library
 
-Add entries to `data/snacks.ts` following the existing format, then delete `snack-state.db` and restart the dev server to re-seed.
+Add entries to `data/snacks.ts` following the existing format, then:
+- **Local:** delete `snack-state.db` and restart the dev server to re-seed
+- **Production:** re-seed via Supabase dashboard or a migration script
