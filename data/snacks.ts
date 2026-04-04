@@ -8,7 +8,7 @@ const snacks: Omit<Snack, "id">[] = [
   // ─── ENERGIZED ─────────────────────────────────────────────────
   {
     name: "Banana + almond butter",
-    ingredients: ["banana", "almond butter"],
+    ingredients: ["1 medium banana", "2 tbsp almond butter"],
     prep_time_minutes: 2,
     tags: ["energized", "uplifted"] as State[],
     nutrition: { protein_g: 7, carbs_g: 35, fat_g: 16, fiber_g: 5, sugar_g: 17, magnesium_mg: 75, potassium_mg: 680, iron_mg: 1.0, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -21,7 +21,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Apple slices + peanut butter",
-    ingredients: ["apple", "peanut butter"],
+    ingredients: ["1 medium apple", "2 tbsp peanut butter"],
     prep_time_minutes: 2,
     tags: ["energized", "focused"] as State[],
     nutrition: { protein_g: 7, carbs_g: 30, fat_g: 16, fiber_g: 6, sugar_g: 18, magnesium_mg: 50, potassium_mg: 380, iron_mg: 0.6, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -34,7 +34,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Instant oatmeal + banana",
-    ingredients: ["instant oats", "banana", "milk"],
+    ingredients: ["½ cup instant oats", "1 medium banana", "¾ cup milk"],
     prep_time_minutes: 4,
     tags: ["energized"] as State[],
     nutrition: { protein_g: 6, carbs_g: 45, fat_g: 3, fiber_g: 5, sugar_g: 15, magnesium_mg: 45, potassium_mg: 450, iron_mg: 1.5, vitamin_b6_mg: 0.4, caffeine_mg: 0 },
@@ -47,7 +47,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Whole grain toast + almond butter",
-    ingredients: ["whole grain bread", "almond butter"],
+    ingredients: ["2 slices whole grain bread", "2 tbsp almond butter"],
     prep_time_minutes: 2,
     tags: ["energized", "focused"] as State[],
     nutrition: { protein_g: 9, carbs_g: 24, fat_g: 16, fiber_g: 5, sugar_g: 4, magnesium_mg: 65, potassium_mg: 290, iron_mg: 1.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -60,7 +60,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "String cheese + apple",
-    ingredients: ["string cheese", "apple"],
+    ingredients: ["1 stick string cheese", "1 medium apple"],
     prep_time_minutes: 1,
     tags: ["energized", "focused"] as State[],
     nutrition: { protein_g: 8, carbs_g: 20, fat_g: 5, fiber_g: 3, sugar_g: 14, magnesium_mg: 15, potassium_mg: 200, iron_mg: 0.3, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -73,7 +73,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Trail mix (nuts + dried fruit)",
-    ingredients: ["mixed nuts", "dried cranberries", "dried mango"],
+    ingredients: ["¼ cup mixed nuts", "2 tbsp dried cranberries", "2 tbsp dried mango"],
     prep_time_minutes: 1,
     tags: ["energized"] as State[],
     nutrition: { protein_g: 6, carbs_g: 20, fat_g: 15, fiber_g: 3, sugar_g: 12, magnesium_mg: 60, potassium_mg: 300, iron_mg: 1.5, vitamin_b6_mg: 0.15, caffeine_mg: 0 },
@@ -86,20 +86,20 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Oat-based granola bar",
-    ingredients: ["rolled oats", "honey", "dried fruit"],
+    ingredients: ["1 bar (40–50g) rolled oats", "1 tsp honey", "small handful dried fruit"],
     prep_time_minutes: 0,
     tags: ["energized"] as State[],
     nutrition: { protein_g: 4, carbs_g: 28, fat_g: 6, fiber_g: 3, sugar_g: 12, magnesium_mg: 30, potassium_mg: 130, iron_mg: 1.0, vitamin_b6_mg: 0.05, caffeine_mg: 0 },
     warnings: [],
     dietary: { is_vegetarian: true, is_vegan: true, is_nut_free: true, is_dairy_free: true },
-    steps: ["Open the package.", "Eat as-is or break into pieces.", "Pair with water for best effect."],
+    steps: ["One bar (40–50g) is enough — it gives you ~28g of complex carbs for a solid energy window.", "Eat it 15–30 minutes before you need the energy, not after.", "Drink water alongside to help the fiber work."],
     effort: "Easy",
     nutrition_highlights: ["Complex carbs", "Quick grab", "Good fiber"],
     smart_swaps: [{ ingredient: "oat granola bar", swap: "a rice cake with jam or a banana" }],
   },
   {
     name: "Dates + almond butter",
-    ingredients: ["medjool dates", "almond butter"],
+    ingredients: ["3 medjool dates", "1½ tbsp almond butter"],
     prep_time_minutes: 2,
     tags: ["energized"] as State[],
     nutrition: { protein_g: 4, carbs_g: 30, fat_g: 9, fiber_g: 3, sugar_g: 25, magnesium_mg: 30, potassium_mg: 300, iron_mg: 1.0, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -112,7 +112,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Walnuts + raisins",
-    ingredients: ["walnuts", "raisins"],
+    ingredients: ["¼ cup walnuts", "2 tbsp raisins"],
     prep_time_minutes: 1,
     tags: ["energized", "uplifted"] as State[],
     nutrition: { protein_g: 5, carbs_g: 20, fat_g: 18, fiber_g: 2, sugar_g: 15, magnesium_mg: 45, potassium_mg: 270, iron_mg: 1.0, vitamin_b6_mg: 0.15, caffeine_mg: 0 },
@@ -125,7 +125,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Microwaved sweet potato",
-    ingredients: ["sweet potato"],
+    ingredients: ["1 medium sweet potato (about 130g)"],
     prep_time_minutes: 5,
     tags: ["energized", "calm"] as State[],
     nutrition: { protein_g: 3, carbs_g: 26, fat_g: 0, fiber_g: 4, sugar_g: 8, magnesium_mg: 30, potassium_mg: 440, iron_mg: 0.8, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -138,7 +138,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Freeze-dried fruit + cashews",
-    ingredients: ["freeze-dried strawberries", "cashews"],
+    ingredients: ["¼ cup freeze-dried strawberries", "¼ cup cashews"],
     prep_time_minutes: 1,
     tags: ["energized", "uplifted"] as State[],
     nutrition: { protein_g: 6, carbs_g: 28, fat_g: 12, fiber_g: 3, sugar_g: 18, magnesium_mg: 50, potassium_mg: 300, iron_mg: 2.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -151,7 +151,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Banana + walnuts",
-    ingredients: ["banana", "walnuts"],
+    ingredients: ["1 medium banana", "¼ cup walnuts"],
     prep_time_minutes: 1,
     tags: ["energized", "sleep_ready"] as State[],
     nutrition: { protein_g: 5, carbs_g: 30, fat_g: 18, fiber_g: 4, sugar_g: 16, magnesium_mg: 60, potassium_mg: 640, iron_mg: 1.0, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -164,7 +164,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Protein shake (plain whey)",
-    ingredients: ["whey protein powder", "water"],
+    ingredients: ["1 scoop (30g) whey protein powder", "8–10 oz cold water"],
     prep_time_minutes: 2,
     tags: ["energized", "focused"] as State[],
     nutrition: { protein_g: 25, carbs_g: 5, fat_g: 2, fiber_g: 0, sugar_g: 3, magnesium_mg: 20, potassium_mg: 200, iron_mg: 0.5, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -179,7 +179,7 @@ const snacks: Omit<Snack, "id">[] = [
   // ─── FOCUSED ────────────────────────────────────────────────────
   {
     name: "Greek yogurt + mixed berries",
-    ingredients: ["plain Greek yogurt", "mixed berries"],
+    ingredients: ["¾ cup plain Greek yogurt", "½ cup mixed berries"],
     prep_time_minutes: 2,
     tags: ["focused", "uplifted"] as State[],
     nutrition: { protein_g: 17, carbs_g: 22, fat_g: 4, fiber_g: 3, sugar_g: 14, magnesium_mg: 20, potassium_mg: 300, iron_mg: 0.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -192,7 +192,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Cottage cheese + pineapple",
-    ingredients: ["cottage cheese", "pineapple chunks"],
+    ingredients: ["½ cup cottage cheese", "½ cup pineapple chunks"],
     prep_time_minutes: 2,
     tags: ["focused", "uplifted"] as State[],
     nutrition: { protein_g: 14, carbs_g: 16, fat_g: 2, fiber_g: 1, sugar_g: 13, magnesium_mg: 15, potassium_mg: 220, iron_mg: 0.2, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -205,7 +205,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Hard-boiled eggs",
-    ingredients: ["eggs"],
+    ingredients: ["2 large hard-boiled eggs"],
     prep_time_minutes: 1,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 12, carbs_g: 1, fat_g: 10, fiber_g: 0, sugar_g: 1, magnesium_mg: 12, potassium_mg: 140, iron_mg: 1.8, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -218,7 +218,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Hummus + carrot sticks",
-    ingredients: ["hummus", "carrots"],
+    ingredients: ["3 tbsp hummus", "1 cup carrot sticks (about 3 medium carrots)"],
     prep_time_minutes: 3,
     tags: ["focused", "calm"] as State[],
     nutrition: { protein_g: 5, carbs_g: 18, fat_g: 5, fiber_g: 5, sugar_g: 6, magnesium_mg: 25, potassium_mg: 380, iron_mg: 1.0, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -231,7 +231,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Smoked salmon + crackers",
-    ingredients: ["smoked salmon", "whole grain crackers"],
+    ingredients: ["2 oz smoked salmon", "8 whole grain crackers"],
     prep_time_minutes: 2,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 14, carbs_g: 18, fat_g: 6, fiber_g: 1, sugar_g: 1, magnesium_mg: 25, potassium_mg: 320, iron_mg: 0.5, vitamin_b6_mg: 0.4, caffeine_mg: 0 },
@@ -244,7 +244,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Edamame",
-    ingredients: ["edamame (shelled)"],
+    ingredients: ["1 cup shelled edamame (about 155g)"],
     prep_time_minutes: 3,
     tags: ["focused", "calm"] as State[],
     nutrition: { protein_g: 9, carbs_g: 9, fat_g: 4, fiber_g: 4, sugar_g: 2, magnesium_mg: 50, potassium_mg: 340, iron_mg: 1.8, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -257,20 +257,20 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Roasted chickpeas",
-    ingredients: ["chickpeas", "olive oil", "spices"],
+    ingredients: ["½ cup roasted chickpeas (about 100g)", "1 tsp olive oil", "pinch of spices"],
     prep_time_minutes: 0,
     tags: ["focused", "energized"] as State[],
     nutrition: { protein_g: 7, carbs_g: 20, fat_g: 3, fiber_g: 6, sugar_g: 2, magnesium_mg: 35, potassium_mg: 240, iron_mg: 2.0, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
     warnings: [],
     dietary: { is_vegetarian: true, is_vegan: true, is_nut_free: true, is_dairy_free: true },
-    steps: ["Open the bag of pre-roasted chickpeas.", "Pour into a bowl.", "Eat as-is — they're already seasoned."],
+    steps: ["A ½ cup serving (~100 calories) gives you 7g protein and 6g fiber — enough to hold focus for 2 hours.", "Eat slowly — the crunch naturally slows you down, which helps with sustained attention.", "Pair with water; the fiber absorbs it and keeps you feeling full longer."],
     effort: "Easy",
     nutrition_highlights: ["High fiber", "High iron", "Good protein"],
     smart_swaps: [{ ingredient: "roasted chickpeas", swap: "edamame or roasted peas" }],
   },
   {
     name: "Avocado toast",
-    ingredients: ["whole grain bread", "avocado", "lemon", "salt"],
+    ingredients: ["1 slice whole grain bread", "½ ripe avocado", "½ lemon (juice)", "pinch of salt"],
     prep_time_minutes: 3,
     tags: ["focused", "calm"] as State[],
     nutrition: { protein_g: 5, carbs_g: 22, fat_g: 10, fiber_g: 6, sugar_g: 2, magnesium_mg: 30, potassium_mg: 380, iron_mg: 1.5, vitamin_b6_mg: 0.3, caffeine_mg: 0 },
@@ -283,7 +283,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Cottage cheese + cucumber",
-    ingredients: ["cottage cheese", "cucumber slices"],
+    ingredients: ["½ cup cottage cheese", "½ medium cucumber, sliced"],
     prep_time_minutes: 2,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 14, carbs_g: 6, fat_g: 2, fiber_g: 1, sugar_g: 4, magnesium_mg: 15, potassium_mg: 220, iron_mg: 0.2, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -296,20 +296,20 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Beef jerky",
-    ingredients: ["beef jerky"],
+    ingredients: ["1 oz beef jerky (about 28g)"],
     prep_time_minutes: 0,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 9, carbs_g: 3, fat_g: 1, fiber_g: 0, sugar_g: 2, magnesium_mg: 10, potassium_mg: 150, iron_mg: 1.5, vitamin_b6_mg: 0.15, caffeine_mg: 0 },
     warnings: [],
     dietary: { is_vegetarian: false, is_vegan: false, is_nut_free: true, is_dairy_free: true },
-    steps: ["Open the package.", "Portion into a bowl or eat straight from the bag.", "Pair with water."],
+    steps: ["1 oz (about 28g) gives you 9g of protein — the right amount to sharpen focus without feeling heavy.", "Eat it slowly; jerky is dense and a little goes a long way.", "Follow with a glass of water — it's salty, and hydration helps your concentration too."],
     effort: "Easy",
     nutrition_highlights: ["High protein", "Low carbs", "Low fat"],
     smart_swaps: [{ ingredient: "beef jerky", swap: "turkey jerky or a hard-boiled egg" }],
   },
   {
     name: "Chia pudding",
-    ingredients: ["chia seeds", "almond milk"],
+    ingredients: ["3 tbsp chia seeds", "1 cup almond milk"],
     prep_time_minutes: 5,
     tags: ["focused", "calm"] as State[],
     nutrition: { protein_g: 5, carbs_g: 18, fat_g: 8, fiber_g: 10, sugar_g: 5, magnesium_mg: 90, potassium_mg: 200, iron_mg: 2.5, vitamin_b6_mg: 0.05, caffeine_mg: 0 },
@@ -322,7 +322,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Green tea + rice crackers",
-    ingredients: ["green tea", "rice crackers"],
+    ingredients: ["1 green tea bag", "10–12 rice crackers"],
     prep_time_minutes: 3,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 2, carbs_g: 20, fat_g: 0, fiber_g: 0, sugar_g: 0, magnesium_mg: 5, potassium_mg: 40, iron_mg: 0.2, vitamin_b6_mg: 0.05, caffeine_mg: 30 },
@@ -337,7 +337,7 @@ const snacks: Omit<Snack, "id">[] = [
   // ─── CALM ───────────────────────────────────────────────────────
   {
     name: "Celery + peanut butter",
-    ingredients: ["celery stalks", "peanut butter"],
+    ingredients: ["3–4 celery stalks", "2 tbsp peanut butter"],
     prep_time_minutes: 2,
     tags: ["calm", "focused"] as State[],
     nutrition: { protein_g: 8, carbs_g: 10, fat_g: 16, fiber_g: 3, sugar_g: 4, magnesium_mg: 50, potassium_mg: 340, iron_mg: 0.8, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -350,20 +350,20 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Sunflower seeds",
-    ingredients: ["roasted sunflower seeds"],
+    ingredients: ["3 tbsp roasted sunflower seeds (about 30g)"],
     prep_time_minutes: 0,
     tags: ["calm"] as State[],
     nutrition: { protein_g: 5, carbs_g: 5, fat_g: 12, fiber_g: 2, sugar_g: 1, magnesium_mg: 115, potassium_mg: 180, iron_mg: 1.5, vitamin_b6_mg: 0.4, caffeine_mg: 0 },
     warnings: [],
     dietary: { is_vegetarian: true, is_vegan: true, is_nut_free: true, is_dairy_free: true },
-    steps: ["Measure out a small handful of sunflower seeds.", "Pour into a bowl.", "Eat slowly — the shelling (if applicable) naturally slows you down."],
+    steps: ["3 tablespoons (~30g) gives you 115mg of magnesium — one of the best plant sources for calming your nervous system.", "Eat them slowly over 10 minutes; don't rush through them.", "Best mid-afternoon or early evening when you want to take the edge off."],
     effort: "Easy",
     nutrition_highlights: ["Very high magnesium", "High vitamin B6", "Low sugar"],
     smart_swaps: [{ ingredient: "sunflower seeds", swap: "pumpkin seeds or hemp seeds" }],
   },
   {
     name: "Rice cakes + avocado",
-    ingredients: ["rice cakes", "avocado"],
+    ingredients: ["2 rice cakes", "½ ripe avocado"],
     prep_time_minutes: 2,
     tags: ["calm", "focused"] as State[],
     nutrition: { protein_g: 3, carbs_g: 24, fat_g: 8, fiber_g: 4, sugar_g: 1, magnesium_mg: 20, potassium_mg: 280, iron_mg: 0.5, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -376,7 +376,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Air-popped popcorn",
-    ingredients: ["popcorn kernels"],
+    ingredients: ["3 cups popped popcorn (about 2 tbsp kernels)"],
     prep_time_minutes: 3,
     tags: ["calm", "sleep_ready"] as State[],
     nutrition: { protein_g: 2, carbs_g: 16, fat_g: 1, fiber_g: 3, sugar_g: 0, magnesium_mg: 15, potassium_mg: 75, iron_mg: 0.5, vitamin_b6_mg: 0.05, caffeine_mg: 0 },
@@ -389,7 +389,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Cucumber slices + hummus",
-    ingredients: ["cucumber", "hummus"],
+    ingredients: ["1 medium cucumber, sliced", "3 tbsp hummus"],
     prep_time_minutes: 3,
     tags: ["calm"] as State[],
     nutrition: { protein_g: 5, carbs_g: 12, fat_g: 5, fiber_g: 3, sugar_g: 4, magnesium_mg: 20, potassium_mg: 280, iron_mg: 1.0, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -402,7 +402,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Almond butter on celery",
-    ingredients: ["celery stalks", "almond butter"],
+    ingredients: ["3–4 celery stalks", "2 tbsp almond butter"],
     prep_time_minutes: 2,
     tags: ["calm", "focused"] as State[],
     nutrition: { protein_g: 7, carbs_g: 10, fat_g: 18, fiber_g: 4, sugar_g: 3, magnesium_mg: 75, potassium_mg: 330, iron_mg: 1.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -415,7 +415,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Mixed nuts",
-    ingredients: ["almonds", "cashews", "walnuts", "pecans"],
+    ingredients: ["2 tbsp almonds", "2 tbsp cashews", "1 tbsp walnuts", "1 tbsp pecans"],
     prep_time_minutes: 0,
     tags: ["calm", "focused"] as State[],
     nutrition: { protein_g: 5, carbs_g: 8, fat_g: 18, fiber_g: 2, sugar_g: 2, magnesium_mg: 60, potassium_mg: 220, iron_mg: 1.2, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -428,7 +428,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Oat crackers + cream cheese",
-    ingredients: ["oat crackers", "cream cheese"],
+    ingredients: ["6–8 oat crackers", "2 tbsp cream cheese"],
     prep_time_minutes: 2,
     tags: ["calm"] as State[],
     nutrition: { protein_g: 4, carbs_g: 22, fat_g: 6, fiber_g: 2, sugar_g: 3, magnesium_mg: 15, potassium_mg: 100, iron_mg: 1.0, vitamin_b6_mg: 0.05, caffeine_mg: 0 },
@@ -441,20 +441,20 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Pumpkin seeds",
-    ingredients: ["roasted pumpkin seeds"],
+    ingredients: ["2 tbsp roasted pumpkin seeds (about 30g)"],
     prep_time_minutes: 0,
     tags: ["calm", "sleep_ready"] as State[],
     nutrition: { protein_g: 8, carbs_g: 5, fat_g: 14, fiber_g: 1, sugar_g: 0, magnesium_mg: 185, potassium_mg: 260, iron_mg: 2.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
     warnings: [],
     dietary: { is_vegetarian: true, is_vegan: true, is_nut_free: true, is_dairy_free: true },
-    steps: ["Open the bag and portion into a small bowl.", "Eat slowly — pumpkin seeds reward patience.", "Drink water alongside."],
+    steps: ["2 tablespoons (about 30g) is the sweet spot — you get 185mg of magnesium, which is nearly half your daily need.", "Eat them slowly over 10–15 minutes to give the magnesium time to start working.", "Best eaten 30–60 minutes before you want to feel calm or wind down for sleep."],
     effort: "Easy",
     nutrition_highlights: ["Very high magnesium", "High iron", "Zero sugar"],
     smart_swaps: [{ ingredient: "pumpkin seeds", swap: "sunflower seeds or hemp seeds" }],
   },
   {
     name: "Lemon water + rice cakes + avocado",
-    ingredients: ["lemon water", "rice cakes", "avocado"],
+    ingredients: ["1 glass water + ½ lemon", "2 rice cakes", "½ ripe avocado"],
     prep_time_minutes: 3,
     tags: ["calm"] as State[],
     nutrition: { protein_g: 2, carbs_g: 22, fat_g: 6, fiber_g: 3, sugar_g: 0, magnesium_mg: 15, potassium_mg: 240, iron_mg: 0.3, vitamin_b6_mg: 0.15, caffeine_mg: 0 },
@@ -469,7 +469,7 @@ const snacks: Omit<Snack, "id">[] = [
   // ─── UPLIFTED ───────────────────────────────────────────────────
   {
     name: "Almonds + dark chocolate",
-    ingredients: ["almonds", "dark chocolate (70%+)"],
+    ingredients: ["¼ cup almonds", "2–3 squares dark chocolate (70%+)"],
     prep_time_minutes: 1,
     tags: ["uplifted", "calm"] as State[],
     nutrition: { protein_g: 7, carbs_g: 14, fat_g: 18, fiber_g: 4, sugar_g: 7, magnesium_mg: 80, potassium_mg: 280, iron_mg: 1.5, vitamin_b6_mg: 0.05, caffeine_mg: 12 },
@@ -482,7 +482,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Orange + walnuts",
-    ingredients: ["orange", "walnuts"],
+    ingredients: ["1 medium orange", "¼ cup walnuts"],
     prep_time_minutes: 2,
     tags: ["uplifted", "focused"] as State[],
     nutrition: { protein_g: 5, carbs_g: 22, fat_g: 18, fiber_g: 4, sugar_g: 14, magnesium_mg: 50, potassium_mg: 380, iron_mg: 0.8, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -495,7 +495,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Mixed berries + whipped cream",
-    ingredients: ["mixed berries", "whipped cream"],
+    ingredients: ["1 cup mixed berries", "2 tbsp whipped cream"],
     prep_time_minutes: 2,
     tags: ["uplifted"] as State[],
     nutrition: { protein_g: 2, carbs_g: 18, fat_g: 5, fiber_g: 4, sugar_g: 12, magnesium_mg: 15, potassium_mg: 200, iron_mg: 0.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -508,7 +508,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Cashews + dried cranberries",
-    ingredients: ["cashews", "dried cranberries"],
+    ingredients: ["¼ cup cashews", "2 tbsp dried cranberries"],
     prep_time_minutes: 1,
     tags: ["uplifted"] as State[],
     nutrition: { protein_g: 5, carbs_g: 22, fat_g: 12, fiber_g: 1, sugar_g: 14, magnesium_mg: 45, potassium_mg: 200, iron_mg: 2.0, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -521,7 +521,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Mango + coconut yogurt",
-    ingredients: ["mango", "coconut yogurt"],
+    ingredients: ["1 cup diced mango", "½ cup coconut yogurt"],
     prep_time_minutes: 2,
     tags: ["uplifted"] as State[],
     nutrition: { protein_g: 4, carbs_g: 30, fat_g: 5, fiber_g: 2, sugar_g: 24, magnesium_mg: 18, potassium_mg: 290, iron_mg: 0.5, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -534,7 +534,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Grapes + cheddar cubes",
-    ingredients: ["grapes", "cheddar cheese"],
+    ingredients: ["1 cup grapes", "1 oz cheddar cheese (about 28g)"],
     prep_time_minutes: 2,
     tags: ["uplifted", "calm"] as State[],
     nutrition: { protein_g: 7, carbs_g: 20, fat_g: 9, fiber_g: 1, sugar_g: 18, magnesium_mg: 15, potassium_mg: 250, iron_mg: 0.3, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -547,7 +547,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Kiwi + cottage cheese",
-    ingredients: ["kiwi fruit", "cottage cheese"],
+    ingredients: ["2 kiwi fruits", "½ cup cottage cheese"],
     prep_time_minutes: 2,
     tags: ["uplifted", "sleep_ready"] as State[],
     nutrition: { protein_g: 14, carbs_g: 22, fat_g: 2, fiber_g: 4, sugar_g: 14, magnesium_mg: 25, potassium_mg: 470, iron_mg: 0.5, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -562,7 +562,7 @@ const snacks: Omit<Snack, "id">[] = [
   // ─── SLEEP-READY ────────────────────────────────────────────────
   {
     name: "Chamomile tea + whole grain crackers",
-    ingredients: ["chamomile tea", "whole grain crackers"],
+    ingredients: ["1 chamomile tea bag", "8 whole grain crackers"],
     prep_time_minutes: 3,
     tags: ["sleep_ready", "calm"] as State[],
     nutrition: { protein_g: 2, carbs_g: 18, fat_g: 2, fiber_g: 2, sugar_g: 1, magnesium_mg: 10, potassium_mg: 50, iron_mg: 0.5, vitamin_b6_mg: 0.05, caffeine_mg: 0 },
@@ -575,7 +575,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Warm milk + honey",
-    ingredients: ["whole milk", "honey"],
+    ingredients: ["1 cup whole milk", "1 tsp honey"],
     prep_time_minutes: 3,
     tags: ["sleep_ready"] as State[],
     nutrition: { protein_g: 8, carbs_g: 18, fat_g: 8, fiber_g: 0, sugar_g: 17, magnesium_mg: 30, potassium_mg: 380, iron_mg: 0.1, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -588,7 +588,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Tart cherry juice",
-    ingredients: ["tart cherry juice (unsweetened)"],
+    ingredients: ["4–8 oz tart cherry juice (unsweetened)"],
     prep_time_minutes: 1,
     tags: ["sleep_ready"] as State[],
     nutrition: { protein_g: 1, carbs_g: 28, fat_g: 0, fiber_g: 0, sugar_g: 26, magnesium_mg: 18, potassium_mg: 270, iron_mg: 0.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -601,7 +601,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Banana + warm milk",
-    ingredients: ["banana", "warm whole milk"],
+    ingredients: ["1 medium banana", "1 cup warm whole milk"],
     prep_time_minutes: 3,
     tags: ["sleep_ready"] as State[],
     nutrition: { protein_g: 9, carbs_g: 38, fat_g: 8, fiber_g: 3, sugar_g: 24, magnesium_mg: 45, potassium_mg: 740, iron_mg: 0.4, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -614,20 +614,20 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Pistachios",
-    ingredients: ["roasted pistachios (unsalted)"],
+    ingredients: ["20–25 roasted pistachios, unsalted (about 30g)"],
     prep_time_minutes: 0,
     tags: ["calm", "sleep_ready"] as State[],
     nutrition: { protein_g: 6, carbs_g: 8, fat_g: 12, fiber_g: 3, sugar_g: 2, magnesium_mg: 35, potassium_mg: 300, iron_mg: 1.2, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
     warnings: ["contains nuts"],
     dietary: { is_vegetarian: true, is_vegan: true, is_nut_free: false, is_dairy_free: true },
-    steps: ["Measure out a small handful of pistachios.", "Shell them slowly — the process is naturally calming.", "Eat at a relaxed pace."],
+    steps: ["About 20–25 pistachios (30g) is one serving — enough for 0.5mg of B6, which supports melatonin production.", "Shell them one at a time; the repetitive motion is genuinely calming and slows your eating pace.", "Eat 30–60 minutes before bed for best effect."],
     effort: "Easy",
     nutrition_highlights: ["High vitamin B6", "Good potassium", "Low sugar"],
     smart_swaps: [{ ingredient: "pistachios", swap: "pumpkin seeds or sunflower seeds for nut-free" }],
   },
   {
     name: "Pear + ricotta",
-    ingredients: ["pear", "part-skim ricotta cheese"],
+    ingredients: ["1 medium pear", "¼ cup part-skim ricotta cheese"],
     prep_time_minutes: 2,
     tags: ["sleep_ready", "calm"] as State[],
     nutrition: { protein_g: 7, carbs_g: 26, fat_g: 5, fiber_g: 5, sugar_g: 16, magnesium_mg: 18, potassium_mg: 200, iron_mg: 0.3, vitamin_b6_mg: 0.05, caffeine_mg: 0 },
@@ -640,7 +640,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Whole milk yogurt + honey",
-    ingredients: ["whole milk plain yogurt", "honey"],
+    ingredients: ["¾ cup whole milk plain yogurt", "1 tsp honey"],
     prep_time_minutes: 1,
     tags: ["sleep_ready", "calm"] as State[],
     nutrition: { protein_g: 9, carbs_g: 18, fat_g: 8, fiber_g: 0, sugar_g: 16, magnesium_mg: 25, potassium_mg: 340, iron_mg: 0.1, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -656,7 +656,7 @@ const snacks: Omit<Snack, "id">[] = [
   // ENERGIZED
   {
     name: "Rice cakes + peanut butter + banana",
-    ingredients: ["rice cakes", "peanut butter", "banana"],
+    ingredients: ["2 rice cakes", "2 tbsp peanut butter", "1 medium banana"],
     prep_time_minutes: 3,
     tags: ["energized"] as State[],
     nutrition: { protein_g: 8, carbs_g: 38, fat_g: 16, fiber_g: 4, sugar_g: 16, magnesium_mg: 55, potassium_mg: 500, iron_mg: 0.8, vitamin_b6_mg: 0.4, caffeine_mg: 0 },
@@ -669,7 +669,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Whole grain pita + hummus",
-    ingredients: ["whole grain pita", "hummus"],
+    ingredients: ["1 whole grain pita", "3 tbsp hummus"],
     prep_time_minutes: 2,
     tags: ["energized", "focused"] as State[],
     nutrition: { protein_g: 8, carbs_g: 30, fat_g: 5, fiber_g: 5, sugar_g: 2, magnesium_mg: 30, potassium_mg: 180, iron_mg: 2.0, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -682,7 +682,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Mango + tajin",
-    ingredients: ["mango", "tajin seasoning"],
+    ingredients: ["1 cup diced mango", "1 tsp tajin seasoning"],
     prep_time_minutes: 3,
     tags: ["energized", "uplifted"] as State[],
     nutrition: { protein_g: 1, carbs_g: 25, fat_g: 0, fiber_g: 3, sugar_g: 22, magnesium_mg: 18, potassium_mg: 280, iron_mg: 0.3, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -695,7 +695,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Corn tortilla + black beans + salsa",
-    ingredients: ["corn tortilla", "canned black beans", "salsa"],
+    ingredients: ["1 corn tortilla", "½ cup canned black beans (drained)", "2 tbsp salsa"],
     prep_time_minutes: 4,
     tags: ["energized"] as State[],
     nutrition: { protein_g: 9, carbs_g: 32, fat_g: 2, fiber_g: 8, sugar_g: 3, magnesium_mg: 45, potassium_mg: 350, iron_mg: 2.5, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -708,7 +708,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Pineapple + cottage cheese",
-    ingredients: ["pineapple chunks", "cottage cheese"],
+    ingredients: ["½ cup pineapple chunks", "½ cup cottage cheese"],
     prep_time_minutes: 2,
     tags: ["energized", "uplifted"] as State[],
     nutrition: { protein_g: 14, carbs_g: 20, fat_g: 2, fiber_g: 1, sugar_g: 16, magnesium_mg: 18, potassium_mg: 250, iron_mg: 0.3, vitamin_b6_mg: 0.15, caffeine_mg: 0 },
@@ -721,7 +721,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Oatmeal energy balls",
-    ingredients: ["rolled oats", "peanut butter", "honey", "chocolate chips"],
+    ingredients: ["1 cup rolled oats", "½ cup peanut butter", "2 tbsp honey", "2 tbsp chocolate chips"],
     prep_time_minutes: 5,
     tags: ["energized"] as State[],
     nutrition: { protein_g: 6, carbs_g: 28, fat_g: 10, fiber_g: 3, sugar_g: 12, magnesium_mg: 40, potassium_mg: 160, iron_mg: 1.2, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -736,7 +736,7 @@ const snacks: Omit<Snack, "id">[] = [
   // FOCUSED
   {
     name: "Tuna + crackers",
-    ingredients: ["canned tuna", "whole grain crackers"],
+    ingredients: ["1 can (5 oz) tuna, drained", "10–12 whole grain crackers"],
     prep_time_minutes: 2,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 20, carbs_g: 18, fat_g: 2, fiber_g: 1, sugar_g: 0, magnesium_mg: 22, potassium_mg: 220, iron_mg: 1.2, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -749,7 +749,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Turkey roll-ups",
-    ingredients: ["deli turkey slices", "cream cheese", "cucumber"],
+    ingredients: ["3–4 deli turkey slices", "2 tbsp cream cheese", "4 cucumber strips"],
     prep_time_minutes: 3,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 16, carbs_g: 5, fat_g: 6, fiber_g: 0, sugar_g: 2, magnesium_mg: 15, potassium_mg: 200, iron_mg: 0.8, vitamin_b6_mg: 0.4, caffeine_mg: 0 },
@@ -762,7 +762,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Boiled egg + avocado",
-    ingredients: ["hard-boiled egg", "avocado", "salt"],
+    ingredients: ["1 hard-boiled egg", "½ ripe avocado", "pinch of salt"],
     prep_time_minutes: 2,
     tags: ["focused", "calm"] as State[],
     nutrition: { protein_g: 9, carbs_g: 9, fat_g: 16, fiber_g: 6, sugar_g: 1, magnesium_mg: 30, potassium_mg: 480, iron_mg: 1.5, vitamin_b6_mg: 0.4, caffeine_mg: 0 },
@@ -775,7 +775,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Lentil soup (canned)",
-    ingredients: ["canned lentil soup"],
+    ingredients: ["1 can (15 oz) lentil soup"],
     prep_time_minutes: 3,
     tags: ["focused", "calm"] as State[],
     nutrition: { protein_g: 9, carbs_g: 24, fat_g: 2, fiber_g: 6, sugar_g: 3, magnesium_mg: 35, potassium_mg: 400, iron_mg: 3.0, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -788,7 +788,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Almond flour crackers + guacamole",
-    ingredients: ["almond flour crackers", "guacamole"],
+    ingredients: ["10–12 almond flour crackers", "3 tbsp guacamole"],
     prep_time_minutes: 2,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 5, carbs_g: 14, fat_g: 14, fiber_g: 4, sugar_g: 1, magnesium_mg: 40, potassium_mg: 320, iron_mg: 1.0, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -801,7 +801,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Skyr + blueberries",
-    ingredients: ["plain skyr", "blueberries"],
+    ingredients: ["¾ cup plain skyr", "½ cup blueberries"],
     prep_time_minutes: 2,
     tags: ["focused"] as State[],
     nutrition: { protein_g: 17, carbs_g: 18, fat_g: 0, fiber_g: 2, sugar_g: 14, magnesium_mg: 18, potassium_mg: 240, iron_mg: 0.3, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -816,7 +816,7 @@ const snacks: Omit<Snack, "id">[] = [
   // CALM
   {
     name: "Warm oat milk + cinnamon",
-    ingredients: ["oat milk", "cinnamon"],
+    ingredients: ["1 cup oat milk", "¼ tsp cinnamon"],
     prep_time_minutes: 3,
     tags: ["calm", "sleep_ready"] as State[],
     nutrition: { protein_g: 3, carbs_g: 16, fat_g: 4, fiber_g: 2, sugar_g: 7, magnesium_mg: 15, potassium_mg: 150, iron_mg: 0.4, vitamin_b6_mg: 0.05, caffeine_mg: 0 },
@@ -829,20 +829,20 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Seaweed snack",
-    ingredients: ["roasted seaweed sheets"],
+    ingredients: ["1 package roasted seaweed sheets (about 5g)"],
     prep_time_minutes: 0,
     tags: ["calm"] as State[],
     nutrition: { protein_g: 2, carbs_g: 3, fat_g: 3, fiber_g: 1, sugar_g: 0, magnesium_mg: 30, potassium_mg: 100, iron_mg: 1.0, vitamin_b6_mg: 0.05, caffeine_mg: 0 },
     warnings: [],
     dietary: { is_vegetarian: true, is_vegan: true, is_nut_free: true, is_dairy_free: true },
-    steps: ["Open the package.", "Eat one sheet at a time — they're light and crisp.", "Pair with a glass of water."],
+    steps: ["One full package (~5g) is a serving — it's very low calorie but hits the craving for something savory.", "Eat one sheet at a time to make it last; the ritual is part of what makes it calming.", "Pair with water — seaweed is salty and staying hydrated supports the calm feeling."],
     effort: "Easy",
     nutrition_highlights: ["Very low calorie", "Zero sugar", "Good magnesium"],
     smart_swaps: [{ ingredient: "seaweed snack", swap: "rice crackers or air-popped popcorn" }],
   },
   {
     name: "Banana + tahini",
-    ingredients: ["banana", "tahini"],
+    ingredients: ["1 medium banana", "2 tbsp tahini"],
     prep_time_minutes: 2,
     tags: ["calm", "sleep_ready"] as State[],
     nutrition: { protein_g: 5, carbs_g: 30, fat_g: 10, fiber_g: 4, sugar_g: 16, magnesium_mg: 55, potassium_mg: 560, iron_mg: 1.5, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -855,7 +855,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Apple + cheddar slices",
-    ingredients: ["apple", "cheddar cheese"],
+    ingredients: ["1 medium apple", "1 oz cheddar cheese (about 28g)"],
     prep_time_minutes: 2,
     tags: ["calm", "focused"] as State[],
     nutrition: { protein_g: 7, carbs_g: 22, fat_g: 9, fiber_g: 3, sugar_g: 16, magnesium_mg: 15, potassium_mg: 200, iron_mg: 0.3, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -868,7 +868,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Herbal tea + dark chocolate",
-    ingredients: ["herbal tea (no caffeine)", "dark chocolate (70%+)"],
+    ingredients: ["1 herbal tea bag (caffeine-free)", "1–2 squares dark chocolate (70%+)"],
     prep_time_minutes: 3,
     tags: ["calm", "uplifted"] as State[],
     nutrition: { protein_g: 2, carbs_g: 10, fat_g: 7, fiber_g: 2, sugar_g: 5, magnesium_mg: 40, potassium_mg: 120, iron_mg: 1.0, vitamin_b6_mg: 0.02, caffeine_mg: 5 },
@@ -883,7 +883,7 @@ const snacks: Omit<Snack, "id">[] = [
   // UPLIFTED
   {
     name: "Strawberries + balsamic drizzle",
-    ingredients: ["strawberries", "balsamic glaze"],
+    ingredients: ["1 cup strawberries, hulled", "1 tsp balsamic glaze"],
     prep_time_minutes: 3,
     tags: ["uplifted"] as State[],
     nutrition: { protein_g: 1, carbs_g: 16, fat_g: 0, fiber_g: 3, sugar_g: 11, magnesium_mg: 15, potassium_mg: 220, iron_mg: 0.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -896,7 +896,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Peanut butter + banana smoothie",
-    ingredients: ["banana", "peanut butter", "oat milk"],
+    ingredients: ["1 frozen banana", "2 tbsp peanut butter", "1 cup oat milk"],
     prep_time_minutes: 4,
     tags: ["uplifted", "energized"] as State[],
     nutrition: { protein_g: 9, carbs_g: 38, fat_g: 16, fiber_g: 4, sugar_g: 20, magnesium_mg: 60, potassium_mg: 600, iron_mg: 1.2, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -909,7 +909,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Melon + prosciutto",
-    ingredients: ["cantaloupe", "prosciutto"],
+    ingredients: ["4 wedges cantaloupe", "2–3 slices prosciutto"],
     prep_time_minutes: 3,
     tags: ["uplifted"] as State[],
     nutrition: { protein_g: 8, carbs_g: 14, fat_g: 4, fiber_g: 1, sugar_g: 12, magnesium_mg: 15, potassium_mg: 380, iron_mg: 0.5, vitamin_b6_mg: 0.2, caffeine_mg: 0 },
@@ -922,7 +922,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Overnight oats with berries",
-    ingredients: ["rolled oats", "almond milk", "mixed berries", "honey"],
+    ingredients: ["½ cup rolled oats", "¾ cup almond milk", "½ cup mixed berries", "1 tsp honey"],
     prep_time_minutes: 5,
     tags: ["uplifted", "energized"] as State[],
     nutrition: { protein_g: 6, carbs_g: 42, fat_g: 4, fiber_g: 6, sugar_g: 16, magnesium_mg: 40, potassium_mg: 300, iron_mg: 2.0, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -937,7 +937,7 @@ const snacks: Omit<Snack, "id">[] = [
   // SLEEP-READY
   {
     name: "Magnesium-rich trail mix",
-    ingredients: ["pumpkin seeds", "dark chocolate chips", "dried cherries"],
+    ingredients: ["2 tbsp pumpkin seeds", "1 tbsp dark chocolate chips", "2 tbsp dried cherries"],
     prep_time_minutes: 1,
     tags: ["sleep_ready"] as State[],
     nutrition: { protein_g: 7, carbs_g: 18, fat_g: 14, fiber_g: 2, sugar_g: 10, magnesium_mg: 160, potassium_mg: 260, iron_mg: 2.5, vitamin_b6_mg: 0.1, caffeine_mg: 4 },
@@ -950,7 +950,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Banana + almond butter + honey",
-    ingredients: ["banana", "almond butter", "honey"],
+    ingredients: ["1 medium banana", "2 tbsp almond butter", "1 tsp honey"],
     prep_time_minutes: 2,
     tags: ["sleep_ready"] as State[],
     nutrition: { protein_g: 7, carbs_g: 38, fat_g: 16, fiber_g: 5, sugar_g: 22, magnesium_mg: 75, potassium_mg: 680, iron_mg: 1.0, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -963,7 +963,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Rice + cottage cheese",
-    ingredients: ["cooked white rice", "cottage cheese"],
+    ingredients: ["½ cup cooked white rice", "½ cup cottage cheese"],
     prep_time_minutes: 3,
     tags: ["sleep_ready"] as State[],
     nutrition: { protein_g: 16, carbs_g: 28, fat_g: 2, fiber_g: 0, sugar_g: 3, magnesium_mg: 20, potassium_mg: 230, iron_mg: 0.5, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
@@ -976,7 +976,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Oatmeal + magnesium milk",
-    ingredients: ["rolled oats", "whole milk", "banana", "cinnamon"],
+    ingredients: ["½ cup rolled oats", "1 cup whole milk", "1 medium banana", "¼ tsp cinnamon"],
     prep_time_minutes: 5,
     tags: ["sleep_ready"] as State[],
     nutrition: { protein_g: 10, carbs_g: 48, fat_g: 8, fiber_g: 5, sugar_g: 18, magnesium_mg: 70, potassium_mg: 620, iron_mg: 1.8, vitamin_b6_mg: 0.5, caffeine_mg: 0 },
@@ -989,7 +989,7 @@ const snacks: Omit<Snack, "id">[] = [
   },
   {
     name: "Kefir + honey",
-    ingredients: ["plain kefir", "honey"],
+    ingredients: ["1 cup plain kefir", "1 tsp honey"],
     prep_time_minutes: 1,
     tags: ["sleep_ready", "calm"] as State[],
     nutrition: { protein_g: 10, carbs_g: 14, fat_g: 3, fiber_g: 0, sugar_g: 13, magnesium_mg: 28, potassium_mg: 380, iron_mg: 0.1, vitamin_b6_mg: 0.1, caffeine_mg: 0 },
