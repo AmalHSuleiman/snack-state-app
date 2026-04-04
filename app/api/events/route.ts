@@ -5,12 +5,12 @@ import type { AnalyticsEvent } from "@/lib/types";
 export async function POST(req: NextRequest) {
   try {
     const body: AnalyticsEvent = await req.json();
-    const { event, state, snack_id, snack_name, hour } = body;
+    const { event, state, snack_id, snack_name, hour, anon_id } = body;
 
-    logEvent({ event, state, snack_id, snack_name, hour });
+    await logEvent({ event, state, snack_id, snack_name, hour, anon_id });
 
     // Console trace for MVP observability
-    console.log(`[event] ${event}`, { state, snack_id, snack_name, hour });
+    console.log(`[event] ${event}`, { state, snack_id, snack_name, hour, anon_id });
 
     return NextResponse.json({ ok: true });
   } catch (err) {

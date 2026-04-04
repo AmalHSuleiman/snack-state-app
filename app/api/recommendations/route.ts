@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    logEvent({ event: "recommendation_shown", state, hour: resolvedHour });
+    await logEvent({ event: "recommendation_shown", state, hour: resolvedHour });
 
     return NextResponse.json({ ...result, state, hour: resolvedHour });
   } catch (err) {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Analytics from "@/components/Analytics";
 
 export const metadata: Metadata = {
   title: "Snack State",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </a>
             </div>
           </header>
+          <Analytics />
           <main className="flex-1">{children}</main>
           <footer className="border-t border-gray-100 py-6 text-center text-xs text-gray-400">
             Snack State MVP — generic snack recommendations only. Not medical advice.

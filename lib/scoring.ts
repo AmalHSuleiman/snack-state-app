@@ -163,7 +163,7 @@ export function getRecommendations(
   state: State,
   hour: number,
   filters: Filters = {}
-): { top: ScoredSnack; alternatives: [ScoredSnack, ScoredSnack] } | null {
+): { top: ScoredSnack; alternatives: ScoredSnack[] } | null {
   const eligible = snacks.filter((s) => passesFilters(s, filters));
 
   if (eligible.length < 3) return null;
@@ -178,6 +178,6 @@ export function getRecommendations(
 
   return {
     top: scored[0],
-    alternatives: [scored[1], scored[2]],
+    alternatives: scored.slice(1, 7),
   };
 }

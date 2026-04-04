@@ -86,16 +86,21 @@ export default function SnackCard({ snack, variant, state, onChoose, onSave, det
       )}
 
       <div className="flex gap-2">
-        <button
-          onClick={() => onChoose(snack)}
-          className={`flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-95 ${
-            isTop
-              ? "bg-gray-900 text-white hover:bg-gray-700"
-              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-          }`}
-        >
-          I'm making this
-        </button>
+        {detailHref ? (
+          <Link
+            href={detailHref}
+            className="flex-1 py-2.5 rounded-xl font-semibold text-sm text-center transition-all active:scale-95 bg-gray-900 text-white hover:bg-gray-700"
+          >
+            View recipe
+          </Link>
+        ) : (
+          <button
+            onClick={() => onChoose(snack)}
+            className="flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-95 bg-gray-900 text-white hover:bg-gray-700"
+          >
+            I'm making this
+          </button>
+        )}
         <button
           onClick={() => onSave(snack)}
           title="Save for later"

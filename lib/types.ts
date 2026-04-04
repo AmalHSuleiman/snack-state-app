@@ -66,7 +66,7 @@ export interface ScoredSnack extends Snack {
 
 export interface RecommendationResponse {
   top: ScoredSnack;
-  alternatives: [ScoredSnack, ScoredSnack];
+  alternatives: ScoredSnack[];
   state: State;
   hour: number;
 }
@@ -76,11 +76,14 @@ export interface AnalyticsEvent {
     | "state_selected"
     | "recommendation_shown"
     | "recommendation_chosen"
-    | "caffeine_snack_chosen";
+    | "caffeine_snack_chosen"
+    | "first_visit"
+    | "return_visit";
   state?: State;
   snack_id?: number;
   snack_name?: string;
   hour?: number;
+  anon_id?: string;
 }
 
 export interface SavedSnack {

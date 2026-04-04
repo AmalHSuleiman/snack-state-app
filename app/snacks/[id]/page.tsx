@@ -96,6 +96,31 @@ export default async function SnackDetailPage({
         </div>
       </div>
 
+      {/* Macros */}
+      <div className="bg-white rounded-2xl border border-gray-100 p-5 mb-4">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Nutrition per serving</h2>
+        <div className="grid grid-cols-3 gap-3">
+          {[
+            { label: "Protein", value: `${snack.nutrition.protein_g}g` },
+            { label: "Carbs", value: `${snack.nutrition.carbs_g}g` },
+            { label: "Fat", value: `${snack.nutrition.fat_g}g` },
+            { label: "Fiber", value: `${snack.nutrition.fiber_g}g` },
+            { label: "Sugar", value: `${snack.nutrition.sugar_g}g` },
+            { label: "Magnesium", value: `${snack.nutrition.magnesium_mg}mg` },
+          ].map(({ label, value }) => (
+            <div key={label} className="text-center bg-gray-50 rounded-xl py-3 px-2">
+              <p className="text-base font-bold text-gray-900">{value}</p>
+              <p className="text-xs text-gray-400 mt-0.5">{label}</p>
+            </div>
+          ))}
+        </div>
+        {snack.nutrition.caffeine_mg > 0 && (
+          <p className="text-xs text-gray-400 mt-3 text-center">
+            Contains {snack.nutrition.caffeine_mg}mg caffeine
+          </p>
+        )}
+      </div>
+
       {/* Ingredients */}
       <div className="bg-white rounded-2xl border border-gray-100 p-5 mb-4">
         <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Ingredients</h2>

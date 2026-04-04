@@ -51,12 +51,14 @@ function ResultsContent() {
   const [chosen, setChosen] = useState<number | null>(null);
   const [savedIds, setSavedIds] = useState<number[]>([]);
   const [toast, setToast] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
   const fetchRecommendations = useCallback(async () => {
     if (!state) return;
     setData(null);
     setError(null);
     setChosen(null);
+    setShowAll(false);
 
     try {
       const res = await fetch("/api/recommendations", {
@@ -183,7 +185,7 @@ function ResultsContent() {
             Alternatives
           </p>
 
-          {data.alternatives.map((snack) => (
+          {(showAll ? data.alternatives : data.alternatives.slice(0, 2)).map((snack) => (
             <SnackCard
               key={snack.id}
               snack={snack}
@@ -195,12 +197,14 @@ function ResultsContent() {
             />
           ))}
 
-          <button
-            onClick={fetchRecommendations}
-            className="w-full py-3 rounded-2xl border border-gray-200 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-800 font-medium transition-all"
-          >
-            Show different options
-          </button>
+          {!showAll && data.alternatives.length > 2 && (
+            <button
+              onClick={() => setShowAll(true)}
+              className="w-full py-3 rounded-2xl border border-dashed border-gray-200 text-sm text-gray-400 hover:bg-gray-50 hover:text-gray-700 font-medium transition-all"
+            >
+              + {data.alternatives.length - 2} more options
+            </button>
+          )}
         </div>
       )}
 
