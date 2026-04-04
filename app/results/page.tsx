@@ -3,113 +3,34 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react";
-import type { RecommendationResponse, ScoredSnack, State } from "@/lib/types";
+import type { RecommendationResponse, ScoredSnack, SavedSnack, State } from "@/lib/types";
+import SnackCard from "@/components/SnackCard";
 
-const STATE_META: Record<State, { label: string; emoji: string; accent: string; badge: string }> = {
-  energized: { label: "Energized", emoji: "⚡", accent: "text-amber-600", badge: "bg-amber-100 text-amber-700" },
-  focused:   { label: "Focused",   emoji: "🎯", accent: "text-blue-600",  badge: "bg-blue-100 text-blue-700"   },
-  calm:      { label: "Calm",      emoji: "🌿", accent: "text-emerald-600", badge: "bg-emerald-100 text-emerald-700" },
-  uplifted:  { label: "Uplifted",  emoji: "✨", accent: "text-violet-600", badge: "bg-violet-100 text-violet-700" },
-  sleep_ready: { label: "Sleep-Ready", emoji: "🌙", accent: "text-indigo-600", badge: "bg-indigo-100 text-indigo-700" },
+const STATE_META: Record<State, { label: string; emoji: string; accent: string }> = {
+  energized:   { label: "Energized",   emoji: "⚡", accent: "text-amber-600"   },
+  focused:     { label: "Focused",     emoji: "🎯", accent: "text-blue-600"    },
+  calm:        { label: "Calm",        emoji: "🌿", accent: "text-emerald-600" },
+  uplifted:    { label: "Uplifted",    emoji: "✨", accent: "text-violet-600"  },
+  sleep_ready: { label: "Sleep-Ready", emoji: "🌙", accent: "text-indigo-600"  },
 };
 
-function NutritionPill({ label, value }: { label: string; value: string }) {
-  return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gray-100 text-xs text-gray-600 font-medium">
-      <span className="text-gray-400">{label}</span> {value}
-    </span>
-  );
-}
-
-function SnackCard({
-  snack,
-  variant,
-  state,
-  onChoose,
-  onSave,
-}: {
-  snack: ScoredSnack;
-  variant: "top" | "alt";
-  state: State;
-  onChoose: (snack: ScoredSnack) => void;
-  onSave: (snack: ScoredSnack) => void;
-}) {
-  const meta = STATE_META[state];
-  const n = snack.nutrition;
-  const isTop = variant === "top";
-
-  return (
-    <div
-      className={`bg-white rounded-2xl border ${
-        isTop ? "border-gray-200 shadow-sm" : "border-gray-100"
-      } p-5`}
-    >
-      {isTop && (
-        <div className="flex items-center gap-2 mb-3">
-          <span className={`text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${meta.badge}`}>
-            {meta.emoji} Top pick
-          </span>
-        </div>
-      )}
-
-      <div className="flex items-start justify-between gap-3 mb-2">
-        <h2 className={`font-bold ${isTop ? "text-lg" : "text-base"} text-gray-900`}>{snack.name}</h2>
-        <span className="text-xs text-gray-400 whitespace-nowrap pt-0.5">
-          ≤ {snack.prep_time_minutes} min
-        </span>
-      </div>
-
-      <p className="text-sm text-gray-500 mb-3 leading-relaxed">{snack.explanation}</p>
-
-      {/* Nutrition snapshot */}
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        <NutritionPill label="Protein" value={`${n.protein_g}g`} />
-        <NutritionPill label="Carbs" value={`${n.carbs_g}g`} />
-        <NutritionPill label="Fiber" value={`${n.fiber_g}g`} />
-        <NutritionPill label="Sugar" value={`${n.sugar_g}g`} />
-        {n.magnesium_mg >= 30 && <NutritionPill label="Mg" value={`${n.magnesium_mg}mg`} />}
-        {n.caffeine_mg > 0 && <NutritionPill label="Caffeine" value={`${n.caffeine_mg}mg`} />}
-      </div>
-
-      {/* Ingredients */}
-      <p className="text-xs text-gray-400 mb-4">
-        {snack.ingredients.join(", ")}
-      </p>
-
-      {/* Warnings */}
-      {snack.warnings.length > 0 && (
-        <div className="flex flex-wrap gap-1 mb-4">
-          {snack.warnings.map((w) => (
-            <span key={w} className="text-xs px-2 py-0.5 rounded-full bg-orange-50 text-orange-600 border border-orange-100">
-              {w}
-            </span>
-          ))}
-        </div>
-      )}
-
-      <div className="flex gap-2">
-        <button
-          onClick={() => onChoose(snack)}
-          className={`flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-95 ${
-            isTop
-              ? "bg-gray-900 text-white hover:bg-gray-700"
-              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-          }`}
-        >
-          I'm making this
-        </button>
-        <button
-          onClick={() => onSave(snack)}
-          title="Save for later"
-          className="px-3 py-2.5 rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-500 hover:text-gray-800 transition-all"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  );
+function migrateLocalStorage() {
+  if (localStorage.getItem("saved_snacks_v2")) return;
+  const old = localStorage.getItem("saved_snacks");
+  if (!old) return;
+  try {
+    const oldItems: ScoredSnack[] = JSON.parse(old);
+    const migrated: SavedSnack[] = oldItems.map((s) => ({
+      id: s.id,
+      name: s.name,
+      savedState: null,
+      savedAt: Date.now(),
+    }));
+    localStorage.setItem("saved_snacks_v2", JSON.stringify(migrated));
+    localStorage.removeItem("saved_snacks");
+  } catch {
+    // ignore malformed data
+  }
 }
 
 function ResultsContent() {
@@ -141,11 +62,7 @@ function ResultsContent() {
       const res = await fetch("/api/recommendations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          state,
-          hour: new Date().getHours(),
-          filters,
-        }),
+        body: JSON.stringify({ state, hour: new Date().getHours(), filters }),
       });
       if (!res.ok) {
         const e = await res.json();
@@ -164,10 +81,10 @@ function ResultsContent() {
     fetchRecommendations();
   }, [fetchRecommendations]);
 
-  // Load saved snack IDs from localStorage
   useEffect(() => {
-    const raw = localStorage.getItem("saved_snacks");
-    if (raw) setSavedIds(JSON.parse(raw).map((s: ScoredSnack) => s.id));
+    migrateLocalStorage();
+    const raw = localStorage.getItem("saved_snacks_v2");
+    if (raw) setSavedIds(JSON.parse(raw).map((s: SavedSnack) => s.id));
   }, []);
 
   async function handleChoose(snack: ScoredSnack) {
@@ -188,11 +105,11 @@ function ResultsContent() {
   }
 
   function handleSave(snack: ScoredSnack) {
-    const raw = localStorage.getItem("saved_snacks");
-    const saved: ScoredSnack[] = raw ? JSON.parse(raw) : [];
+    const raw = localStorage.getItem("saved_snacks_v2");
+    const saved: SavedSnack[] = raw ? JSON.parse(raw) : [];
     if (!saved.find((s) => s.id === snack.id)) {
-      saved.push(snack);
-      localStorage.setItem("saved_snacks", JSON.stringify(saved));
+      saved.push({ id: snack.id, name: snack.name, savedState: state, savedAt: Date.now() });
+      localStorage.setItem("saved_snacks_v2", JSON.stringify(saved));
       setSavedIds((prev) => [...prev, snack.id]);
       showToast("Saved for later!");
     } else {
@@ -214,7 +131,6 @@ function ResultsContent() {
 
   return (
     <div className="max-w-lg mx-auto px-4 py-10">
-      {/* Header */}
       <div className="flex items-center gap-3 mb-8">
         <button onClick={() => router.push("/")} className="text-gray-400 hover:text-gray-700 transition-colors">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,7 +143,6 @@ function ResultsContent() {
         </div>
       </div>
 
-      {/* Loading */}
       {!data && !error && (
         <div className="space-y-4">
           {[0, 1, 2].map((i) => (
@@ -244,7 +159,6 @@ function ResultsContent() {
         </div>
       )}
 
-      {/* Error */}
       {error && (
         <div className="bg-red-50 border border-red-100 rounded-2xl p-6 text-center">
           <p className="text-red-600 font-medium mb-4">{error}</p>
@@ -254,24 +168,21 @@ function ResultsContent() {
         </div>
       )}
 
-      {/* Results */}
       {data && (
         <div className="space-y-4">
-          {/* Top pick */}
           <SnackCard
             snack={data.top}
             variant="top"
             state={state}
             onChoose={handleChoose}
             onSave={handleSave}
+            detailHref={`/snacks/${data.top.id}?state=${state}`}
           />
 
-          {/* Divider */}
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center pt-2">
             Alternatives
           </p>
 
-          {/* Alternatives */}
           {data.alternatives.map((snack) => (
             <SnackCard
               key={snack.id}
@@ -280,10 +191,10 @@ function ResultsContent() {
               state={state}
               onChoose={handleChoose}
               onSave={handleSave}
+              detailHref={`/snacks/${snack.id}?state=${state}`}
             />
           ))}
 
-          {/* Show another */}
           <button
             onClick={fetchRecommendations}
             className="w-full py-3 rounded-2xl border border-gray-200 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-800 font-medium transition-all"
@@ -293,14 +204,12 @@ function ResultsContent() {
         </div>
       )}
 
-      {/* Toast */}
       {toast && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-sm font-medium px-5 py-2.5 rounded-full shadow-lg pointer-events-none z-50 transition-all">
           {toast}
         </div>
       )}
 
-      {/* Chosen confirmation */}
       {chosen !== null && (
         <div className="fixed inset-0 bg-black/20 flex items-end justify-center z-40 pb-10 px-4" onClick={() => setChosen(null)}>
           <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl text-center" onClick={(e) => e.stopPropagation()}>

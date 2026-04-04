@@ -25,6 +25,11 @@ export interface Dietary {
   is_dairy_free: boolean;
 }
 
+export interface SmartSwap {
+  ingredient: string;
+  swap: string;
+}
+
 export interface Snack {
   id: number;
   name: string;
@@ -34,6 +39,10 @@ export interface Snack {
   nutrition: Nutrition;
   warnings: string[];
   dietary: Dietary;
+  steps: string[];
+  effort: "Easy" | "Medium";
+  nutrition_highlights: string[];
+  smart_swaps: SmartSwap[];
 }
 
 export interface Filters {
@@ -72,4 +81,11 @@ export interface AnalyticsEvent {
   snack_id?: number;
   snack_name?: string;
   hour?: number;
+}
+
+export interface SavedSnack {
+  id: number;
+  name: string;
+  savedState: State | null;
+  savedAt: number;
 }

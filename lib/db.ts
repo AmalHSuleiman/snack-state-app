@@ -5,6 +5,10 @@ export function getAllSnacks(): Snack[] {
   return SNACKS;
 }
 
+export function getSnackById(id: number): Snack | undefined {
+  return SNACKS.find((s) => s.id === id);
+}
+
 // Keep analytics as console logs for now (works on Vercel)
 export function logEvent(params: {
   event: string;
