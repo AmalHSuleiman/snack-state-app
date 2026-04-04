@@ -6,12 +6,12 @@ import { Suspense } from "react";
 import type { RecommendationResponse, ScoredSnack, SavedSnack, State } from "@/lib/types";
 import SnackCard from "@/components/SnackCard";
 
-const STATE_META: Record<State, { label: string; emoji: string; accent: string }> = {
-  energized:   { label: "Energized",   emoji: "⚡", accent: "text-amber-600"   },
-  focused:     { label: "Focused",     emoji: "🎯", accent: "text-blue-600"    },
-  calm:        { label: "Calm",        emoji: "🌿", accent: "text-emerald-600" },
-  uplifted:    { label: "Uplifted",    emoji: "✨", accent: "text-violet-600"  },
-  sleep_ready: { label: "Sleep-Ready", emoji: "🌙", accent: "text-indigo-600"  },
+const STATE_META: Record<State, { label: string }> = {
+  energized:   { label: "Energized"   },
+  focused:     { label: "Focused"     },
+  calm:        { label: "Calm"        },
+  uplifted:    { label: "Uplifted"    },
+  sleep_ready: { label: "Sleep-Ready" },
 };
 
 function migrateLocalStorage() {
@@ -132,29 +132,29 @@ function ResultsContent() {
   const meta = STATE_META[state];
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-10">
-      <div className="flex items-center gap-3 mb-8">
-        <button onClick={() => router.push("/")} className="text-gray-400 hover:text-gray-700 transition-colors">
+    <div className="max-w-lg mx-auto px-4 py-16">
+      <div className="flex items-center gap-3 mb-10">
+        <button onClick={() => router.push("/")} className="text-stone-400 hover:text-stone-700 transition-colors">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <div>
-          <h1 className={`text-xl font-bold ${meta.accent}`}>{meta.emoji} {meta.label}</h1>
-          <p className="text-sm text-gray-400">Snacks to help you get there</p>
+          <h1 className="text-2xl font-bold tracking-tight text-stone-900">{meta.label}</h1>
+          <p className="text-sm text-stone-400">Snacks to help you get there</p>
         </div>
       </div>
 
       {!data && !error && (
         <div className="space-y-4">
           {[0, 1, 2].map((i) => (
-            <div key={i} className="bg-white rounded-2xl border border-gray-100 p-5 animate-pulse">
-              <div className="h-4 bg-gray-100 rounded w-2/3 mb-3" />
-              <div className="h-3 bg-gray-100 rounded w-full mb-2" />
-              <div className="h-3 bg-gray-100 rounded w-4/5 mb-4" />
+            <div key={i} className="bg-white rounded-xl border border-stone-100 p-5 animate-pulse">
+              <div className="h-4 bg-stone-100 rounded w-2/3 mb-3" />
+              <div className="h-3 bg-stone-100 rounded w-full mb-2" />
+              <div className="h-3 bg-stone-100 rounded w-4/5 mb-4" />
               <div className="flex gap-2">
-                <div className="h-9 bg-gray-100 rounded-xl flex-1" />
-                <div className="h-9 w-10 bg-gray-100 rounded-xl" />
+                <div className="h-9 bg-stone-100 rounded-xl flex-1" />
+                <div className="h-9 w-10 bg-stone-100 rounded-xl" />
               </div>
             </div>
           ))}
@@ -162,9 +162,9 @@ function ResultsContent() {
       )}
 
       {error && (
-        <div className="bg-red-50 border border-red-100 rounded-2xl p-6 text-center">
+        <div className="bg-red-50 border border-red-100 rounded-xl p-6 text-center">
           <p className="text-red-600 font-medium mb-4">{error}</p>
-          <button onClick={fetchRecommendations} className="px-4 py-2 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-700">
+          <button onClick={fetchRecommendations} className="px-4 py-2 bg-stone-900 text-white rounded-xl text-sm font-medium hover:bg-stone-700">
             Try again
           </button>
         </div>
@@ -181,7 +181,7 @@ function ResultsContent() {
             detailHref={`/snacks/${data.top.id}?state=${state}`}
           />
 
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center pt-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 text-center pt-2">
             Alternatives
           </p>
 
@@ -200,7 +200,7 @@ function ResultsContent() {
           {!showAll && data.alternatives.length > 2 && (
             <button
               onClick={() => setShowAll(true)}
-              className="w-full py-3 rounded-2xl border border-dashed border-gray-200 text-sm text-gray-400 hover:bg-gray-50 hover:text-gray-700 font-medium transition-all"
+              className="w-full py-3 rounded-xl border border-dashed border-stone-200 text-sm text-stone-400 hover:bg-stone-50 hover:text-stone-700 font-medium transition-all"
             >
               + {data.alternatives.length - 2} more options
             </button>
@@ -209,18 +209,17 @@ function ResultsContent() {
       )}
 
       {toast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-sm font-medium px-5 py-2.5 rounded-full shadow-lg pointer-events-none z-50 transition-all">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full shadow-lg pointer-events-none z-50 transition-all">
           {toast}
         </div>
       )}
 
       {chosen !== null && (
         <div className="fixed inset-0 bg-black/20 flex items-end justify-center z-40 pb-10 px-4" onClick={() => setChosen(null)}>
-          <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl text-center" onClick={(e) => e.stopPropagation()}>
-            <div className="text-3xl mb-2">🎉</div>
-            <h3 className="font-bold text-gray-900 mb-1">Great choice!</h3>
-            <p className="text-sm text-gray-500 mb-4">Enjoy your snack. Come back and let us know how it went.</p>
-            <button onClick={() => { setChosen(null); router.push("/"); }} className="w-full py-3 bg-gray-900 text-white rounded-xl font-semibold text-sm hover:bg-gray-700">
+          <div className="bg-white rounded-xl p-6 max-w-sm w-full shadow-xl text-center" onClick={(e) => e.stopPropagation()}>
+            <h3 className="font-bold text-stone-900 mb-1">Great choice!</h3>
+            <p className="text-sm text-stone-500 mb-4">Enjoy your snack. Come back and let us know how it went.</p>
+            <button onClick={() => { setChosen(null); router.push("/"); }} className="w-full py-3 bg-stone-900 text-white rounded-xl font-semibold text-sm hover:bg-stone-700">
               Done
             </button>
           </div>

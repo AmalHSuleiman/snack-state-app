@@ -52,43 +52,42 @@ export default function SavedPage() {
   }
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-10">
-      <div className="flex items-center gap-3 mb-8">
-        <button onClick={() => router.push("/")} className="text-gray-400 hover:text-gray-700">
+    <div className="max-w-lg mx-auto px-4 py-16">
+      <div className="flex items-center gap-3 mb-10">
+        <button onClick={() => router.push("/")} className="text-stone-400 hover:text-stone-700 transition-colors">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <h1 className="text-xl font-bold text-gray-900">Saved snacks</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-stone-900">Saved snacks</h1>
       </div>
 
       {saved.length === 0 ? (
-        <div className="text-center py-20 text-gray-400">
-          <div className="text-4xl mb-3">🔖</div>
-          <p className="text-sm">No saved snacks yet.<br />Tap the bookmark icon on any recommendation.</p>
-          <button onClick={() => router.push("/")} className="mt-6 px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-700">
+        <div className="text-center py-20 text-stone-400">
+          <p className="text-sm mb-6">No saved snacks yet.<br />Tap the bookmark icon on any recommendation.</p>
+          <button onClick={() => router.push("/")} className="px-5 py-2.5 bg-stone-900 text-white rounded-xl text-sm font-medium hover:bg-stone-700 transition-all">
             Find a snack
           </button>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-2">
           {saved.map((snack) => {
             const detailHref = snack.savedState
               ? `/snacks/${snack.id}?state=${snack.savedState}`
               : `/snacks/${snack.id}`;
             return (
-              <div key={snack.id} className="bg-white rounded-2xl border border-gray-100 p-4 flex items-start gap-3">
+              <div key={snack.id} className="bg-white rounded-xl border border-stone-100 px-5 py-4 flex items-center gap-3">
                 <div className="flex-1 min-w-0">
-                  <Link href={detailHref} className="font-semibold text-gray-900 text-sm mb-0.5 hover:underline block">
+                  <Link href={detailHref} className="font-semibold text-stone-900 text-sm hover:underline block">
                     {snack.name}
                   </Link>
                   {snack.savedState && (
-                    <p className="text-xs text-gray-400">Saved for: {STATE_LABELS[snack.savedState]}</p>
+                    <p className="text-xs text-stone-400 mt-0.5">Saved for: {STATE_LABELS[snack.savedState]}</p>
                   )}
                 </div>
                 <button
                   onClick={() => remove(snack.id)}
-                  className="text-gray-300 hover:text-red-400 transition-colors mt-0.5 flex-shrink-0"
+                  className="text-stone-300 hover:text-red-400 transition-colors flex-shrink-0"
                   title="Remove"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

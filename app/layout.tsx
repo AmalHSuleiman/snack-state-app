@@ -10,16 +10,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased bg-gray-50 text-gray-900">
+      <body className="font-sans antialiased bg-stone-50 text-stone-900">
         <div className="min-h-screen flex flex-col">
-          <header className="border-b border-gray-100 bg-white">
+          <header className="border-b border-stone-200 bg-stone-50">
             <div className="max-w-lg mx-auto px-4 py-4 flex items-center justify-between">
-              <a href="/" className="text-lg font-bold tracking-tight text-gray-900 hover:text-gray-700">
+              <a href="/" className="text-sm font-semibold tracking-widest uppercase text-stone-900 hover:text-stone-600 transition-colors">
                 Snack State
               </a>
               <a
                 href="/saved"
-                className="text-sm text-gray-500 hover:text-gray-800 font-medium"
+                className="text-sm text-stone-500 hover:text-stone-800 transition-colors"
               >
                 Saved
               </a>
@@ -27,8 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           <Analytics />
           <main className="flex-1">{children}</main>
-          <footer className="border-t border-gray-100 py-6 text-center text-xs text-gray-400">
-            Snack State MVP — generic snack recommendations only. Not medical advice.
+          <footer className="border-t border-stone-200 py-6 text-center text-xs text-stone-400">
+            Generic snack recommendations only. Not medical advice.
           </footer>
         </div>
       </body>
