@@ -8,7 +8,7 @@ This file provides guidance to Claude Code for working in this repository.
 npm run dev
 ```
 
-Opens at [http://localhost:3000](http://localhost:3000). No separate seed step needed — the database is seeded automatically on first request.
+Opens at [http://localhost:3000](http://localhost:3000).
 
 ```bash
 npm run build   # production build
@@ -19,7 +19,7 @@ npm start       # run production build
 
 - **Live URL:** https://snack-state-app.vercel.app
 - **Hosting:** Vercel
-- **Database:** Supabase (production); SQLite via `node:sqlite` (local dev)
+- **Database:** Supabase (production analytics only); snack data is static in `data/snacks.ts`
 - Supabase credentials are stored as Vercel environment variables — never hardcode them in source files
 
 ## Git workflow
@@ -33,44 +33,47 @@ After completing any meaningful unit of work, commit and push to GitHub immediat
 
 ## Architecture
 
-| Layer    | Technology                        |
-|----------|-----------------------------------|
-| Frontend | Next.js 16 (App Router, Turbopack)|
-| Styling  | Tailwind CSS                      |
-| Backend  | Next.js API Routes                |
-| Database | Supabase (production) / SQLite via `node:sqlite` (local dev)            |
-| Language | TypeScript                        |
+| Layer    | Technology                         |
+|----------|------------------------------------|
+| Frontend | Next.js 16 (App Router, Turbopack) |
+| Styling  | Tailwind CSS                       |
+| Backend  | Next.js API Routes                 |
+| Database | Supabase (analytics events only)   |
+| Language | TypeScript                         |
 
 ### Project structure
 
 ```
 app/
   page.tsx                  # Home: state selector + dietary filter toggles
-  results/page.tsx          # Results: top pick + 2 alternatives
+  results/page.tsx          # Results: top pick + alternatives (expandable)
   saved/page.tsx            # Saved snacks (localStorage)
-  layout.tsx                # Root layout with header/footer
+  snacks/[id]/page.tsx      # Snack detail: recipe, macros, smart swaps
+  layout.tsx                # Root layout with header/footer + Analytics component
   api/
     recommendations/        # POST /api/recommendations — scoring + ranking
-    events/                 # POST /api/events — analytics logging
+    events/                 # POST /api/events — analytics logging to Supabase
+components/
+  SnackCard.tsx             # Reusable snack card (top pick + alt variants)
+  Analytics.tsx             # Client component: fires first_visit/return_visit on load
 data/
-  snacks.ts                 # 50 curated snack options with nutrition data
+  snacks.ts                 # 80 curated snacks with nutrition data (never insert mid-array — append only)
 lib/
   types.ts                  # Shared TypeScript interfaces
-  db.ts                     # SQLite setup, auto-seeding, query helpers
-  scoring.ts                # Deterministic scoring + explanation builder
+  db.ts                     # Snack lookups + logEvent (writes to Supabase in prod)
+  scoring.ts                # Weighted nutrition scoring + explanation builder
+  emotional-context.ts      # Per-state bestFor/whyItWorks copy for detail page
 ```
 
 ## Key implementation details
 
-- **Snack library** — 50 generic snacks in `data/snacks.ts` with USDA-aligned nutrition values; seeded into the database on first boot
-- **Scoring** — `lib/scoring.ts` computes a weighted nutrition score per state; a time-of-day adjustment applies heavier caffeine penalties after 2 PM
+- **Snack library** — 80 snacks in `data/snacks.ts` with USDA-aligned nutrition values. IDs are positional (index + 1) — never insert mid-array, only append.
+- **Scoring** — `lib/scoring.ts` computes a weighted nutrition score per state; heavier caffeine penalties apply after 2 PM
 - **States** — `energized`, `focused`, `calm`, `uplifted`, `sleep_ready`; each has distinct scoring weights and penalty rules
-- **Dietary filters** — `no_caffeine`, `nut_free`, `dairy_free`, `vegetarian`, `vegan`; passed as query params from the home page
-- **Analytics** — four events logged to SQLite: `state_selected`, `recommendation_shown`, `recommendation_chosen`, `caffeine_snack_chosen`
-- **Saved snacks** — stored in `localStorage`, no user auth required
+- **Dietary filters** — `no_caffeine`, `nut_free`, `dairy_free`, `vegetarian`, `vegan`; passed as query params
+- **Analytics** — events logged to Supabase: `state_selected`, `recommendation_shown`, `recommendation_chosen`, `caffeine_snack_chosen`, `first_visit`, `return_visit`. All events include `anon_id` (UUID stored in localStorage) for return-visit tracking.
+- **Saved snacks** — stored in `localStorage` under `saved_snacks_v2`, no user auth required
 
 ## Extending the snack library
 
-Add entries to `data/snacks.ts` following the existing format, then:
-- **Local:** delete `snack-state.db` and restart the dev server to re-seed
-- **Production:** re-seed via Supabase dashboard or a migration script
+Add entries to the **end** of the array in `data/snacks.ts` following the existing format. Each snack needs: `name`, `ingredients` (with amounts), `prep_time_minutes`, `tags`, `nutrition`, `warnings`, `dietary`, `steps`, `effort`, `nutrition_highlights`, `smart_swaps`.
