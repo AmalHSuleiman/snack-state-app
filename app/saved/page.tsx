@@ -65,7 +65,7 @@ export default function SavedPage() {
       {saved.length === 0 ? (
         <div className="text-center py-20 text-stone-400">
           <p className="text-sm mb-6">No saved snacks yet.<br />Tap the bookmark icon on any recommendation.</p>
-          <button onClick={() => router.push("/")} className="px-5 py-2.5 bg-[#2A4A35] text-white rounded-xl text-sm font-medium hover:bg-[#1E3828] transition-all">
+          <button onClick={() => router.push("/")} className="px-5 py-2.5 border-2 border-emerald-500 text-emerald-600 rounded-xl text-sm font-medium hover:bg-emerald-50 transition-all">
             Find a snack
           </button>
         </div>

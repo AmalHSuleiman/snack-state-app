@@ -83,14 +83,14 @@ export default function SnackCard({ snack, variant, onChoose, onSave, detailHref
         {detailHref ? (
           <Link
             href={detailHref}
-            className="flex-1 py-2.5 rounded-xl font-semibold text-sm text-center transition-all active:scale-95 bg-[#2A4A35] text-white hover:bg-[#1E3828]"
+            className="flex-1 py-2.5 rounded-xl font-semibold text-sm text-center transition-all active:scale-95 border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50"
           >
             View recipe
           </Link>
         ) : (
           <button
             onClick={() => onChoose(snack)}
-            className="flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-95 bg-[#2A4A35] text-white hover:bg-[#1E3828]"
+            className="flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-95 border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50"
           >
             I'm making this
           </button>

@@ -72,23 +72,23 @@ export default function Home() {
             onClick={() => setSelected(s.id)}
             className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl text-left transition-all shadow-sm ${
               selected === s.id
-                ? "bg-[#2A4A35] text-white shadow-md"
+                ? "bg-white border-2 border-emerald-500 text-stone-900 shadow-md"
                 : "bg-white border border-stone-100 text-stone-900 hover:border-stone-300 hover:shadow"
             }`}
           >
             <div className="flex items-center gap-3">
               <span className={`w-2 h-2 rounded-full shrink-0 ${s.dot} ${selected === s.id ? "opacity-60" : ""}`} />
               <div>
-                <div className={`font-semibold text-sm ${selected === s.id ? "text-white" : "text-stone-900"}`}>
+                <div className={`font-semibold text-sm ${selected === s.id ? "text-emerald-600" : "text-stone-900"}`}>
                   {s.label}
                 </div>
-                <div className={`text-xs mt-0.5 ${selected === s.id ? "text-stone-400" : "text-stone-400"}`}>
+                <div className={`text-xs mt-0.5 ${selected === s.id ? "text-stone-500" : "text-stone-400"}`}>
                   {s.description}
                 </div>
               </div>
             </div>
             {selected === s.id && (
-              <svg className="w-4 h-4 text-stone-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             )}
@@ -108,7 +108,7 @@ export default function Home() {
               onClick={() => toggleFilter(f.id)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
                 filters[f.id]
-                  ? "bg-[#2A4A35] text-white border-[#2A4A35]"
+                  ? "bg-white text-emerald-600 border-2 border-emerald-500"
                   : "bg-white text-stone-600 border-stone-200 hover:border-stone-400"
               }`}
             >
@@ -124,7 +124,7 @@ export default function Home() {
         disabled={!selected || loading}
         className={`w-full py-4 rounded-2xl font-semibold text-sm tracking-wide transition-all shadow-sm ${
           selected && !loading
-            ? "bg-[#2A4A35] text-white hover:bg-[#1E3828] active:scale-95 shadow-md"
+            ? "bg-white border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 active:scale-95 shadow-md"
             : "bg-white text-stone-300 border border-stone-100 cursor-not-allowed"
         }`}
       >
