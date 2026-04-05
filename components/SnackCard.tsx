@@ -3,10 +3,21 @@
 import Link from "next/link";
 import type { ScoredSnack, State } from "@/lib/types";
 
-function NutritionPill({ label, value }: { label: string; value: string }) {
+const NUTRITION_COLORS = {
+  protein:  { bg: "bg-emerald-50",  text: "text-emerald-700", dot: "bg-emerald-400" },
+  carbs:    { bg: "bg-amber-50",    text: "text-amber-700",   dot: "bg-amber-400"   },
+  fiber:    { bg: "bg-teal-50",     text: "text-teal-700",    dot: "bg-teal-400"    },
+  sugar:    { bg: "bg-rose-50",     text: "text-rose-700",    dot: "bg-rose-400"    },
+  caffeine: { bg: "bg-purple-50",   text: "text-purple-700",  dot: "bg-purple-400"  },
+  mg:       { bg: "bg-blue-50",     text: "text-blue-700",    dot: "bg-blue-400"    },
+};
+
+function NutritionPill({ label, value, color }: { label: string; value: string; color: keyof typeof NUTRITION_COLORS }) {
+  const c = NUTRITION_COLORS[color];
   return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-stone-100 text-xs text-stone-600 font-medium">
-      <span className="text-stone-400">{label}</span> {value}
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${c.bg} text-xs font-medium ${c.text}`}>
+      <span className={`w-1.5 h-1.5 rounded-full ${c.dot}`} />
+      {label} {value}
     </span>
   );
 }
@@ -25,7 +36,7 @@ export default function SnackCard({ snack, variant, onChoose, onSave, detailHref
   const isTop = variant === "top";
 
   return (
-    <div className={`bg-white rounded-xl border p-5 ${isTop ? "border-stone-200" : "border-stone-100"}`}>
+    <div className={`bg-white rounded-2xl p-5 ${isTop ? "shadow-md" : "shadow-sm border border-stone-100"}`}>
       {isTop && (
         <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-3">
           Top pick
@@ -45,15 +56,15 @@ export default function SnackCard({ snack, variant, onChoose, onSave, detailHref
         </span>
       </div>
 
-      <p className="text-sm text-stone-500 mb-3 leading-relaxed">{snack.explanation}</p>
+      <p className="text-sm text-stone-500 mb-4 leading-relaxed">{snack.explanation}</p>
 
       <div className="flex flex-wrap gap-1.5 mb-4">
-        <NutritionPill label="Protein" value={`${n.protein_g}g`} />
-        <NutritionPill label="Carbs" value={`${n.carbs_g}g`} />
-        <NutritionPill label="Fiber" value={`${n.fiber_g}g`} />
-        <NutritionPill label="Sugar" value={`${n.sugar_g}g`} />
-        {n.magnesium_mg >= 30 && <NutritionPill label="Mg" value={`${n.magnesium_mg}mg`} />}
-        {n.caffeine_mg > 0 && <NutritionPill label="Caffeine" value={`${n.caffeine_mg}mg`} />}
+        <NutritionPill label="Protein" value={`${n.protein_g}g`} color="protein" />
+        <NutritionPill label="Carbs"   value={`${n.carbs_g}g`}   color="carbs"   />
+        <NutritionPill label="Fiber"   value={`${n.fiber_g}g`}   color="fiber"   />
+        <NutritionPill label="Sugar"   value={`${n.sugar_g}g`}   color="sugar"   />
+        {n.magnesium_mg >= 30 && <NutritionPill label="Mg" value={`${n.magnesium_mg}mg`} color="mg" />}
+        {n.caffeine_mg > 0    && <NutritionPill label="Caffeine" value={`${n.caffeine_mg}mg`} color="caffeine" />}
       </div>
 
       <p className="text-xs text-stone-400 mb-4">{snack.ingredients.join(", ")}</p>
@@ -61,7 +72,7 @@ export default function SnackCard({ snack, variant, onChoose, onSave, detailHref
       {snack.warnings.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-4">
           {snack.warnings.map((w) => (
-            <span key={w} className="text-xs px-2 py-0.5 rounded-md bg-orange-50 text-orange-600 border border-orange-100">
+            <span key={w} className="text-xs px-2 py-0.5 rounded-full bg-orange-50 text-orange-600 border border-orange-100">
               {w}
             </span>
           ))}
@@ -72,14 +83,14 @@ export default function SnackCard({ snack, variant, onChoose, onSave, detailHref
         {detailHref ? (
           <Link
             href={detailHref}
-            className="flex-1 py-2.5 rounded-xl font-semibold text-sm text-center transition-all active:scale-95 bg-stone-900 text-white hover:bg-stone-700"
+            className="flex-1 py-2.5 rounded-xl font-semibold text-sm text-center transition-all active:scale-95 bg-[#2A4A35] text-white hover:bg-[#1E3828]"
           >
             View recipe
           </Link>
         ) : (
           <button
             onClick={() => onChoose(snack)}
-            className="flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-95 bg-stone-900 text-white hover:bg-stone-700"
+            className="flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-95 bg-[#2A4A35] text-white hover:bg-[#1E3828]"
           >
             I'm making this
           </button>

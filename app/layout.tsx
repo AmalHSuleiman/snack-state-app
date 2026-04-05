@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased bg-stone-50 text-stone-900">
+      <body className="font-sans antialiased bg-[#EDEAE4] text-stone-900">
         <div className="min-h-screen flex flex-col">
-          <header className="border-b border-stone-200 bg-stone-50">
+          <header className="border-b border-[#E0DDD6] bg-[#EDEAE4]">
             <div className="max-w-lg mx-auto px-4 py-4 flex items-center justify-between">
               <a href="/" className="text-sm font-semibold tracking-widest uppercase text-stone-900 hover:text-stone-600 transition-colors">
                 Snack State
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           <Analytics />
           <main className="flex-1">{children}</main>
-          <footer className="border-t border-stone-200 py-6 text-center text-xs text-stone-400">
+          <footer className="border-t border-[#E0DDD6] py-6 text-center text-xs text-stone-400">
             Generic snack recommendations only. Not medical advice.
           </footer>
         </div>

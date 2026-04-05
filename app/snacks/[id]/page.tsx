@@ -90,7 +90,7 @@ export default async function SnackDetailPage({
           {snack.nutrition_highlights.map((highlight) => (
             <span
               key={highlight}
-              className="px-3 py-1 rounded-md bg-stone-900 text-white text-xs font-medium"
+              className="px-3 py-1 rounded-md bg-[#2A4A35] text-white text-xs font-medium"
             >
               {highlight}
             </span>

@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { State, Filters } from "@/lib/types";
 
-const STATES: { id: State; label: string; emoji: string; description: string }[] = [
-  { id: "energized",   label: "Energized",   emoji: "⚡", description: "Steady power for the next few hours" },
-  { id: "focused",     label: "Focused",     emoji: "◎", description: "Sharp and in the zone" },
-  { id: "calm",        label: "Calm",        emoji: "○", description: "Relaxed and settled" },
-  { id: "uplifted",    label: "Uplifted",    emoji: "↑", description: "A mood boost, no crash" },
-  { id: "sleep_ready", label: "Sleep-Ready", emoji: "◗", description: "Wind down naturally" },
+const STATES: { id: State; label: string; description: string; dot: string }[] = [
+  { id: "energized",   label: "Energized",   description: "Steady power for the next few hours", dot: "bg-amber-400"   },
+  { id: "focused",     label: "Focused",     description: "Sharp and in the zone",               dot: "bg-blue-400"    },
+  { id: "calm",        label: "Calm",        description: "Relaxed and settled",                 dot: "bg-emerald-400" },
+  { id: "uplifted",    label: "Uplifted",    description: "A mood boost, no crash",              dot: "bg-violet-400"  },
+  { id: "sleep_ready", label: "Sleep-Ready", description: "Wind down naturally",                 dot: "bg-indigo-400"  },
 ];
 
 const FILTER_OPTIONS: { id: keyof Filters; label: string }[] = [
@@ -51,37 +51,38 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-16">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold tracking-tight text-stone-900 mb-3">
-          How do you want to feel?
+    <div className="max-w-lg mx-auto px-5 py-12">
+      {/* Two-tone heading */}
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold tracking-tight leading-tight">
+          <span className="text-stone-900">How do you</span>
+          <br />
+          <span className="text-stone-400">want to feel?</span>
         </h1>
-        <p className="text-stone-500 text-base leading-relaxed">
+        <p className="text-stone-500 text-sm mt-3 leading-relaxed">
           Pick a state. Get a snack you can make in under 5 minutes.
         </p>
       </div>
 
       {/* State selector */}
-      <div className="space-y-2 mb-10">
+      <div className="space-y-2.5 mb-10">
         {STATES.map((s) => (
           <button
             key={s.id}
             onClick={() => setSelected(s.id)}
-            className={`w-full flex items-center justify-between px-5 py-4 rounded-xl border text-left transition-all ${
+            className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl text-left transition-all shadow-sm ${
               selected === s.id
-                ? "bg-stone-900 border-stone-900 text-white"
-                : "bg-white border-stone-200 hover:border-stone-400 text-stone-900"
+                ? "bg-[#2A4A35] text-white shadow-md"
+                : "bg-white border border-stone-100 text-stone-900 hover:border-stone-300 hover:shadow"
             }`}
           >
-            <div className="flex items-center gap-4">
-              <span className={`text-sm font-mono ${selected === s.id ? "text-stone-300" : "text-stone-400"}`}>
-                {s.emoji}
-              </span>
+            <div className="flex items-center gap-3">
+              <span className={`w-2 h-2 rounded-full shrink-0 ${s.dot} ${selected === s.id ? "opacity-60" : ""}`} />
               <div>
-                <div className={`font-semibold text-sm tracking-wide ${selected === s.id ? "text-white" : "text-stone-900"}`}>
+                <div className={`font-semibold text-sm ${selected === s.id ? "text-white" : "text-stone-900"}`}>
                   {s.label}
                 </div>
-                <div className={`text-sm mt-0.5 ${selected === s.id ? "text-stone-400" : "text-stone-500"}`}>
+                <div className={`text-xs mt-0.5 ${selected === s.id ? "text-stone-400" : "text-stone-400"}`}>
                   {s.description}
                 </div>
               </div>
@@ -105,9 +106,9 @@ export default function Home() {
             <button
               key={f.id}
               onClick={() => toggleFilter(f.id)}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium border transition-all ${
+              className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
                 filters[f.id]
-                  ? "bg-stone-900 text-white border-stone-900"
+                  ? "bg-[#2A4A35] text-white border-[#2A4A35]"
                   : "bg-white text-stone-600 border-stone-200 hover:border-stone-400"
               }`}
             >
@@ -121,10 +122,10 @@ export default function Home() {
       <button
         onClick={handleSubmit}
         disabled={!selected || loading}
-        className={`w-full py-4 rounded-xl font-semibold text-sm tracking-wide transition-all ${
+        className={`w-full py-4 rounded-2xl font-semibold text-sm tracking-wide transition-all shadow-sm ${
           selected && !loading
-            ? "bg-stone-900 text-white hover:bg-stone-700 active:scale-95"
-            : "bg-stone-100 text-stone-400 cursor-not-allowed"
+            ? "bg-[#2A4A35] text-white hover:bg-[#1E3828] active:scale-95 shadow-md"
+            : "bg-white text-stone-300 border border-stone-100 cursor-not-allowed"
         }`}
       >
         {loading ? "Finding your snack…" : "Find my snack →"}

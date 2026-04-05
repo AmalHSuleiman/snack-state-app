@@ -164,7 +164,7 @@ function ResultsContent() {
       {error && (
         <div className="bg-red-50 border border-red-100 rounded-xl p-6 text-center">
           <p className="text-red-600 font-medium mb-4">{error}</p>
-          <button onClick={fetchRecommendations} className="px-4 py-2 bg-stone-900 text-white rounded-xl text-sm font-medium hover:bg-stone-700">
+          <button onClick={fetchRecommendations} className="px-4 py-2 bg-[#2A4A35] text-white rounded-xl text-sm font-medium hover:bg-[#1E3828]">
             Try again
           </button>
         </div>
@@ -209,7 +209,7 @@ function ResultsContent() {
       )}
 
       {toast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full shadow-lg pointer-events-none z-50 transition-all">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#2A4A35] text-white text-sm font-medium px-5 py-2.5 rounded-full shadow-lg pointer-events-none z-50 transition-all">
           {toast}
         </div>
       )}
@@ -219,7 +219,7 @@ function ResultsContent() {
           <div className="bg-white rounded-xl p-6 max-w-sm w-full shadow-xl text-center" onClick={(e) => e.stopPropagation()}>
             <h3 className="font-bold text-stone-900 mb-1">Great choice!</h3>
             <p className="text-sm text-stone-500 mb-4">Enjoy your snack. Come back and let us know how it went.</p>
-            <button onClick={() => { setChosen(null); router.push("/"); }} className="w-full py-3 bg-stone-900 text-white rounded-xl font-semibold text-sm hover:bg-stone-700">
+            <button onClick={() => { setChosen(null); router.push("/"); }} className="w-full py-3 bg-[#2A4A35] text-white rounded-xl font-semibold text-sm hover:bg-[#1E3828]">
               Done
             </button>
           </div>
